@@ -1,15 +1,15 @@
 pipeline{
     agent any
     stages {
-        stage ('git'){
+        stage ('random step'){
             steps {
-                git url: "https://github.com/NiteshBehera/Sample3.git" , branch: "main"
+             sh 'cat README'
             }
         }
-        stage ('read'){
-            steps {
-                bat "type README.md"
-            }
+    }
+    post {
+        always {
+           archiveArtifacts artifacts: 'output.txt'
         }
     }
 }
